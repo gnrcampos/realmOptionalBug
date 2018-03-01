@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let realm = try? Realm(), let sale = realm.objects(Sale.self).first {
+            print(sale.coreSale?.soldPrice.value)
+            print(sale.coreSale!.soldPrice.value)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 

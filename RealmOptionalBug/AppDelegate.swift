@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
+        var config = Realm.Configuration()
+        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("optionalBug.realm")
+        print(config.fileURL?.absoluteString ?? "no config url")
+        Realm.Configuration.defaultConfiguration = config
         return true
     }
 
